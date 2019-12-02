@@ -48,6 +48,16 @@ namespace InstallerUI.ViewModel
                 UninstallCommandValue.RaiseCanExecuteChanged();
             }
         }
+        
+        private string InstallUpgradeTextValue = "INSTALL";
+        public string InstallUpgradeText
+        {
+            get => InstallUpgradeTextValue;
+            set
+            {
+                SetProperty(ref InstallUpgradeTextValue, value);
+            }
+        }
 
         private bool DowngradeValue;
         public bool Downgrade
@@ -141,7 +151,11 @@ namespace InstallerUI.ViewModel
                 LogEvent("DetectBegin", ea);
                 CurrentAction = ea.Installed ? "Preparing for software uninstall" : "Preparing for software install";
                 interactionService.RunOnUIThread(
-                    () => Status = ea.Installed ? InstallationStatus.DetectedPresent : InstallationStatus.DetectedAbsent);
+                    () =>
+                        {
+                            Status = ea.Installed ? InstallationStatus.DetectedPresent : InstallationStatus.DetectedAbsent;
+                            InstallUpgradeText = ea.Installed ? "UPGRADE" : "INSTALL";
+                        }
             };
 
             bootstrapper.DetectRelatedBundle += (_, ea) =>
