@@ -222,7 +222,7 @@
 
 
                     <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,520,0,0" >
-                        <Button Style="{DynamicResource BtnDefault}" Name="BtnInstall" Content="INSTALL" Command="{Binding Path=InstallCommand, Mode=OneTime}" IsEnabled="True" Margin="10" Height="30" Width="100" />
+                        <Button Style="{DynamicResource BtnDefault}" Name="BtnInstall" Content="{Binding Path=InstallUpgradeText}" Command="{Binding Path=InstallCommand, Mode=OneTime}" IsEnabled="True" Margin="10" Height="30" Width="100" />
                         <Button Style="{DynamicResource BtnDefault}" Name ="BtnUninstall" Content="UNINSTALL" Command="{Binding Path=UninstallCommand, Mode=OneTime}" Margin="10" Height="30" Width="100"/>
                         <Button Style="{DynamicResource BtnDefault}" Name="BtnCancel" Content="CANCEL" Command="{Binding Path=CancelCommand, Mode=OneTime}" Margin="10" Height="30" Width="100" />
                     </StackPanel>
